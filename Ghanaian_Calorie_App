@@ -1,0 +1,39 @@
+class CalorieApp:
+    def __init__(self):
+        self.food_items = {}
+
+    def add_food_item(self, name, calories):
+        self.food_items[name] = calories
+
+    def calculate_total_calories(self, food_list):
+        total_calories = 0
+        for food in food_list:
+            if food in self.food_items:
+                total_calories += self.food_items[food]
+            else:
+                print(f"Calories for {food} not found in the database.")
+        return total_calories
+
+def main():
+    app = CalorieApp()
+
+    # Add Ghanaian food items and their calorie values to the app's database
+    app.add_food_item("Jollof Rice", 200)
+    app.add_food_item("Banku and Tilapia", 300)
+    app.add_food_item("Fufu with Light Soup", 250)
+    # Add more Ghanaian food items and their calorie values
+    app.add_food_item("Waakye", 180)
+    app.add_food_item("Kelewele", 120)
+    app.add_food_item("Omo Tuo with Groundnut Soup", 280)
+    # Add 94 more Ghanaian food items and their calorie values
+
+    # Get user input for the Ghanaian food items they ate
+    user_input = input("Enter the food (separated by commas): ")
+    user_food_list = [item.strip() for item in user_input.split(',')]
+
+    # Calculate and display total calories
+    total_calories = app.calculate_total_calories(user_food_list)
+    print(f"Total calories for food items you ate: {total_calories}")
+
+if __name__ == "__main__":
+    main()

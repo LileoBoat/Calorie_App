@@ -1,0 +1,49 @@
+class FoodItem:
+    def __init__(self, name, calories_per_unit):
+        self.name = name
+        self.calories_per_unit = calories_per_unit
+
+    def calculate_calories(self, quantity):
+        return quantity * self.calories_per_unit
+
+
+class CalorieCalculator:
+    def __init__(self):
+        self.food_items = []
+
+    def add_food_item(self, food_item):
+        self.food_items.append(food_item)
+
+    def calculate_total_calories(self):
+        total_calories = 0
+        for food_item in self.food_items:
+            quantity = float(input(f"Enter the quantity of {food_item.name} consumed: "))
+            total_calories += food_item.calculate_calories(quantity)
+
+        return total_calories
+
+
+def main():
+    # Creating food items with their respective calories per unit
+    apple = FoodItem("Apple", 52)
+    banana = FoodItem("Banana", 105)
+    chicken_breast = FoodItem("Chicken Breast", 165)
+    pasta = FoodItem("Pasta", 200)
+
+    # Creating a calorie calculator
+    calculator = CalorieCalculator()
+
+    # Adding food items to the calculator
+    calculator.add_food_item(apple)
+    calculator.add_food_item(banana)
+    calculator.add_food_item(chicken_breast)
+    calculator.add_food_item(pasta)
+
+    # Calculating total calories
+    total_calories = calculator.calculate_total_calories()
+
+    print(f"\nTotal calories consumed: {total_calories} calories")
+
+
+if __name__ == "__main__":
+    main()
